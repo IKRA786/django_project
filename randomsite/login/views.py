@@ -1,12 +1,13 @@
 from django.shortcuts import render
 import mysql.connector as sql
+import cred
 em=''
 pwd=''
 # Create your views here.
 def loginaction(request):
     global em,pwd
     if request.method=="POST":
-        m=sql.connect(host="localhost",user="root",passwd="random4569",database='testing')
+        m=sql.connect(host="localhost",user="root",passwd=cred.password,database='testing')
         cursor=m.cursor()
         d=request.POST
         for key,value in d.items():

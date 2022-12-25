@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import cred
 import mysql.connector as sql
 fn=''
 ln=''
@@ -9,7 +10,7 @@ pwd=''
 def signaction(request):
     global fn,ln,s,em,pwd
     if request.method=="POST":
-        m=sql.connect(host="localhost",user="root",passwd="random4569",database='testing')
+        m=sql.connect(host="localhost",user="root",passwd=cred.password,database='testing')
         cursor=m.cursor()
         d=request.POST
         for key,value in d.items():
